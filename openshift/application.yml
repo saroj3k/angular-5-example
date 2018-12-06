@@ -123,7 +123,7 @@ items:
       app: angular-5-example
     name: angular-5-example
   spec:
-    host: angular-5-example-myproject.192.168.42.56.nip.io
+    host: angular-5-example-myproject.192.168.64.4.nip.io
     port:
       targetPort: 8080-tcp
     to:
@@ -137,7 +137,7 @@ items:
       - lastTransitionTime: 2018-01-05T09:32:19Z
         status: "True"
         type: Admitted
-      host: angular-5-example-myproject.192.168.42.56.nip.io
+      host: angular-5-example-myproject.192.168.64.4.nip.io
       routerName: router
       wildcardPolicy: None
 kind: List

@@ -1,4 +1,4 @@
-node('nodejs8') {
+node('nodejs') {
   stage ('checkout') {
     checkout scm
   }
@@ -8,7 +8,7 @@ node('nodejs8') {
       npm install --save classlist.js
     '''
   }
-  try{
+/*  try{
     stage ('test') {
       sh '''
         ls -l /opt/google/chrome/chrome-sandbox
@@ -21,6 +21,7 @@ node('nodejs8') {
   stage ('code quality'){
     sh '$(npm bin)/ng lint'
   }
+  */
   stage ('build') {
     sh '$(npm bin)/ng build --prod --build-optimizer'
   }
