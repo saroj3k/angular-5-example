@@ -27,10 +27,11 @@ node('nodejs') {
   }
   stage ('build image') {
     echo 'github - master version executed'
+    //      oc start-build angular-5-example-rhel --from-dir=dist --follow
     sh '''
       mkdir dist/nginx-cfg
       cp nginx/status.conf dist/nginx-cfg
-      oc start-build angular-5-example-rhel --from-dir=dist --follow
+      oc start-build angular-example-rhel --from-dir=dist --follow
     '''
   }
 }
