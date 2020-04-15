@@ -39,6 +39,7 @@ pipeline{
       }
     }
     stage ('build image') {
+      echo 'github - master version executed'
       steps{
         sh '''
           rm -rf node_modules
