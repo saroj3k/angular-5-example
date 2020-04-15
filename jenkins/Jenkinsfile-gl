@@ -1,0 +1,52 @@
+pipeline{
+  agent { label 'nodejs' }
+  stages{
+    stage ('checkout'){
+      steps{
+        // checkout scm
+          sh "git config http.sslVerify false"
+          git url: "https://git.corp.odfl.com/E069028/angular-example.git", branch: "master", credentialsId: "angular-example-cicd-secret"
+      }
+    }
+    stage ('install modules'){
+      steps{
+        sh '''
+          npm install --verbose -d 
+          npm install --save classlist.js
+        '''
+      }
+    }
+ /*   stage ('test'){
+      steps{
+        sh '''
+          $(npm bin)/ng test --single-run --browsers Chrome_no_sandbox
+        '''
+      }
+      post {
+          always {
+            junit "test-results.xml"
+          }
+      }
+    }
+
+    stage ('code quality'){
+      steps{
+        sh '$(npm bin)/ng lint'
+      }
+    }
+ */
+    stage ('build') {
+      steps{
+        sh '$(npm bin)/ng build --prod --build-optimizer'
+      }
+    }
+    stage ('build image') {
+      steps{
+        sh '''
+          rm -rf node_modules
+          oc start-build angular-example-pipeline --from-dir=. --follow
+        '''
+      }
+    }
+  }
+}
