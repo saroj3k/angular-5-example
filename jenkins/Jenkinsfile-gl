@@ -60,6 +60,7 @@ pipeline{
         '''
        */
        //start the build config for namespace angular-example
+       echo 'github - rhel jffile-gh version executed'
         sh '''
               mkdir dist/nginx-cfg
               cp nginx/status.conf dist/nginx-cfg
