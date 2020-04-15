@@ -26,6 +26,7 @@ node('nodejs') {
     sh '$(npm bin)/ng build --prod --build-optimizer'
   }
   stage ('build image') {
+    echo 'github - master version executed'
     sh '''
       mkdir dist/nginx-cfg
       cp nginx/status.conf dist/nginx-cfg
