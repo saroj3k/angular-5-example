@@ -2,7 +2,7 @@ pipeline{
   agent { label 'nodejs' }
   stages{
   
-   stage("Initialize") {
+    stage("Initialize") {
               steps {
                 script {
                   git url: "https://github.com/saroj3k/okd-jenkins-pipeline.git", branch: "master"
@@ -11,8 +11,7 @@ pipeline{
                   jenkinsPipeline.start(params)
                 }
               }
-     }
-    
+     }    
     stage ('checkout'){
       steps{
         // checkout scm
