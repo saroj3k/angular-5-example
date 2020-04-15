@@ -26,7 +26,7 @@ node('nodejs') {
     sh '$(npm bin)/ng build --prod --build-optimizer'
   }
   stage ('build image') {
-    echo 'github - master version executed'
+    echo 'github - rhel jfile version executed'
     //      oc start-build angular-5-example-rhel --from-dir=dist --follow
     sh '''
       mkdir dist/nginx-cfg
