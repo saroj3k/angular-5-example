@@ -2,17 +2,17 @@ pipeline{
   agent { label 'nodejs' }
   stages{
   
-    stage("Initialize") {
+   stage("Initialize") {
               steps {
                 script {
                   git url: "https://github.com/saroj3k/okd-jenkins-pipeline.git", branch: "master"
                   def jenkinsPipeline = load 'src/org/clg/pipeline/build-ng.groovy'
-                  def params = ['pipelineCodeGitUrl': 'https://github.com/saroj3k/okd-jenkins-pipeline.git', 'pipelineCodeGitBranch': 'master', 'appName' : "angular-example", 'gitBranch': "master", 'gitUrl': "https://git.corp.odfl.com/E069028/angular-example.git", 'gitSecret': “cicd-secret"]
+                  def params = ['pipelineCodeGitUrl': 'https://github.com/saroj3k/okd-jenkins-pipeline.git', 'pipelineCodeGitBranch': 'master', 'appName' : "angular-example", 'gitBranch': "master", 'gitUrl': "https://git.corp.odfl.com/E069028/angular-example.git", 'gitSecret': "cicd-secret"]
                   jenkinsPipeline.start(params)
                 }
               }
      }
-
+    
     stage ('checkout'){
       steps{
         // checkout scm
