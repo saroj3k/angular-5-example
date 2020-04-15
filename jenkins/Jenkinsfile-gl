@@ -53,9 +53,17 @@ pipeline{
     }
     stage ('build image') {
       steps{
+      /* doesnot sound right
         sh '''
           rm -rf node_modules
           oc start-build angular-example-pipeline --from-dir=. --follow
+        '''
+       */
+       //start the build config for namespace angular-example
+        sh '''
+              mkdir dist/nginx-cfg
+              cp nginx/status.conf dist/nginx-cfg
+              oc start-build angular-example-rhel --from-dir=dist --follow
         '''
       }
     }
